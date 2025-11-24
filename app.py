@@ -15,14 +15,14 @@ def plot_time_series(t, y_data, names, title, y_label):
     )
     return fig
 
-st.sidebar.title("🚀 Menú de Simulación")
+st.sidebar.title("Menú de Simulación")
 opcion = st.sidebar.radio(
     "Selecciona un módulo:",
     ("Inicio", "Masa-Resorte", "Péndulo Simple", "Análisis T vs (m, k)", "MAS Amortiguado")
 )
 
 if opcion == "Inicio":
-    st.title("⚛️ Movimiento Armónico Simple (MAS)")
+    st.title("Movimiento Armónico Simple (MAS)")
     st.markdown("""
     Bienvenido a la aplicación interactiva para el estudio del MAS.
     Esta herramienta permite visualizar fenómenos físicos fundamentales:
@@ -40,7 +40,7 @@ if opcion == "Inicio":
     st.write("Donde $A$ es la amplitud, $\omega$ la frecuencia angular y $\phi$ la fase inicial.")
 
 elif opcion == "Masa-Resorte":
-    st.header("🌀 Sistema Masa-Resorte")
+    st.header("Sistema Masa-Resorte")
     
     tipo_sistema = st.radio(
         "Seleccione la Orientación del Sistema:",
@@ -75,11 +75,11 @@ elif opcion == "Masa-Resorte":
         if tipo_sistema == "Vertical":
             g = 9.81
             delta_eq = (m * g) / k
-            st.warning(f"⬇️ **Modo Vertical:** La gravedad estira el resorte inicial.")
+            st.warning(f"**Modo Vertical:** La gravedad estira el resorte inicial.")
             st.metric("Desplazamiento de equilibrio (mg/k)", f"{delta_eq:.3f} m")
             desc_extra = " (Vertical - Afectado por gravedad)"
         else:
-            st.success(f"➡️ **Modo Horizontal:** Sin fricción, movimiento sobre superficie.")
+            st.success(f"**Modo Horizontal:** Sin fricción, movimiento sobre superficie.")
             st.metric("Desplazamiento de equilibrio", "0.000 m")
             desc_extra = " (Horizontal)"
 
@@ -103,7 +103,7 @@ elif opcion == "Masa-Resorte":
             ), use_container_width=True)
 
 elif opcion == "Péndulo Simple":
-    st.header("🕰️ Péndulo Simple: Lineal vs No Lineal")
+    st.header("Péndulo Simple: Lineal vs No Lineal")
     
     col1, col2 = st.columns([1, 3])
     
@@ -136,7 +136,7 @@ elif opcion == "Péndulo Simple":
         st.plotly_chart(fig, use_container_width=True)
 
 elif opcion == "Análisis T vs (m, k)":
-    st.header("📊 Análisis del Periodo (T)")
+    st.header("Análisis del Periodo (T)")
     st.latex(r"T = 2\pi \sqrt{\frac{m}{k}}")
     
     col1, col2 = st.columns(2)
@@ -164,7 +164,7 @@ elif opcion == "Análisis T vs (m, k)":
         st.plotly_chart(fig_k, use_container_width=True)
 
 elif opcion == "MAS Amortiguado":
-    st.header("🌊 Oscilador Armónico Amortiguado")
+    st.header("Oscilador Armónico Amortiguado")
     st.markdown("Añadimos un término de fricción proporcional a la velocidad: $F_{friccion} = -b v$")
     
     col1, col2 = st.columns([1, 3])

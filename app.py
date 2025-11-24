@@ -123,7 +123,6 @@ elif opcion == "Péndulo Simple":
 
 elif opcion == "Análisis T vs (m, k)":
     st.header("Análisis de Periodo")
-    st.write("Visualiza cómo cambia el periodo T al modificar la masa o la constante.")
     
     c1, c2 = st.columns(2)
     with c1:
@@ -175,14 +174,12 @@ elif opcion == "MAS Amortiguado":
 
     with col2:
         st.subheader("📋 Validación de Resultados")
-        st.markdown(f"Aquí verificamos cuánto ha decaído la amplitud (envolvente) en el tiempo exacto **t = {t_check} s**.")
-        
+                
         met1, met2 = st.columns(2)
         met1.metric(f"Amplitud Teórica en t={t_check}", f"{val_envelope_check:.4f} m", help="Calculado con fórmula exponencial")
         
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=t, y=x_damped, name='Posición Real', line=dict(width=2)))
-        # Envolventes
         if b > 0:
             fig.add_trace(go.Scatter(x=t, y=envelope, name='Envolvente (+)', line=dict(dash='dot', color='gray')))
             fig.add_trace(go.Scatter(x=[t_check], y=[val_envelope_check], mode='markers', marker=dict(color='red', size=10), name=f'Punto Verificación t={t_check}'))
